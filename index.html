@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tante Culik Aku Dong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alatsi&family=Rancho&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-5 py-5 bg-gradient-to-br from-gray-900 to-indigo-900 text-gray-200">
+  <div class="w-full max-w-lg mx-auto bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg shadow-xl rounded-xl overflow-hidden border border-gray-700">
+    <!-- Header dengan judul dan tombol play/pause -->
+    <div class="text-gray-100 px-6 py-4 rounded relative border-b border-gray-700 flex justify-between items-center">
+      <div class="flex items-center">
+        <div class="music-icon animate-pulse mr-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+          </svg>
+        </div>
+        <strong class="font-bold text-lg">Tante Culik Aku Dong</strong>
+      </div>
+      
+      <div class="flex gap-3">
+        <button id="playPauseBtn" class="bg-pink-500 hover:bg-pink-600 text-white rounded-full p-2 transition-all duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" id="playIcon">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor" id="pauseIcon">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        
+        <button id="restartBtn" class="bg-indigo-500 hover:bg-indigo-600 text-white rounded-full p-2 transition-all duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Progres bar -->
+    <div class="px-6 py-2 bg-gray-800 bg-opacity-50">
+      <div class="flex items-center gap-2">
+        <span id="currentTime" class="text-xs">0:00</span>
+        <div class="flex-1 bg-gray-700 rounded-full h-1.5 overflow-hidden">
+          <div id="progressBar" class="bg-pink-500 h-full w-0 transition-all duration-100"></div>
+        </div>
+        <span id="duration" class="text-xs">0:00</span>
+      </div>
+    </div>
+
+    <!-- Container chat -->
+    <div class="p-6 h-96 overflow-auto scrollbar-thin" id="chat-scroll-container">
+      <!-- Pesan pembuka -->
+      <div class="flex justify-end mb-6">
+        <div class="flex justify-center items-center space-x-3">
+          <div class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-3 rounded-l-lg rounded-br-lg max-w-xs shadow-md">
+            <p class="font-medium">Tanteee...</p>
+            <audio id="audio" preload="auto">
+              <source src="audio.mp3" type="audio/mpeg">
+              Browser lu ga support audio nih.
+            </audio>
+          </div>
+          <div class="relative">
+            <img src="https://files.catbox.moe/nerl02.jpg" alt="Sender Avatar" 
+                class="w-12 h-12 rounded-full border-2 border-blue-500 shadow-md">
+            <span class="absolute bottom-0 right-0 bg-green-500 rounded-full h-3 w-3 border-2 border-white"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="chat-container">
+        <!-- Konten lirik akan ditampilkan di sini -->
+      </div>
+      
+      <!-- Pesan kredit (tidak dianimasikan) -->
+      <div id="credit-message" class="flex justify-start mb-4 opacity-0 transition-opacity duration-500">
+        <div class="flex justify-center items-center space-x-3">
+          <div class="relative">
+            <img src="https://files.catbox.moe/1fcvkz.jpg" alt="Receiver Avatar" 
+                class="w-12 h-12 rounded-full border-2 border-pink-500 shadow-md">
+            <span class="absolute bottom-0 right-0 bg-green-500 rounded-full h-3 w-3 border-2 border-white"></span>
+          </div>
+          <div class="bg-gray-200 text-gray-900 p-3 rounded-r-lg rounded-bl-lg max-w-xs shadow-md">
+            <p class="font-medium">-Made by Rhin6Z-</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer dengan watermark -->
+    <div class="text-gray-400 text-xs text-center py-2 border-t border-gray-700">
+      Belajar bang <span class="text-pink-500">♥</span>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

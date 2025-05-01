@@ -1,0 +1,178 @@
+/* Font dan styling umum */
+body {
+  font-family: 'Poppins', 'Alatsi', sans-serif;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+/* Animasi gradient background */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Styling untuk container chat dan scroll */
+#chat-scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+#chat-scroll-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+#chat-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#chat-scroll-container::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 20px;
+}
+
+/* Animasi untuk bubble chat */
+.chat-bubble {
+  transform: scale(0);
+  opacity: 0;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animasi untuk lirik - per huruf */
+.lyric-line {
+  white-space: nowrap;
+  overflow: visible;
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+}
+
+.lyric-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: charAppear 0.1s ease-out forwards;
+  animation-delay: calc(var(--char-index, 0) * 0.06s);
+}
+
+@keyframes charAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efek pulse untuk ikon musik */
+.music-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+/* Efek glow untuk bubble chat */
+.glow-effect {
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.8);
+}
+
+/* Animasi untuk Bubble Chat */
+.message-appear {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Styling untuk tombol hover */
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Animasi loading untuk waiting */
+.typing-indicator {
+  display: inline-flex;
+  align-items: center;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  margin: 0 2px;
+  background-color: #606060;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typing-dot 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing-dot {
+  0%, 60%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  30% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
