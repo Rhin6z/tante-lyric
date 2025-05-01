@@ -1,5 +1,4 @@
 # TANTE CULIK AKU DONG
-Made by Rhin6Z, using TailwindCSS, JavaScript, and HTML
 
 [LIVE DEMO](https://tante.rhinz.tech)
 
